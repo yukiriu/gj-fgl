@@ -4,7 +4,7 @@
 
     $title = "Sign in";
 
-    $module = "signin.php";
+    $module = "igninView.php";
     $content = array();
     array_push($content, $module);
 

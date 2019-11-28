@@ -2,9 +2,9 @@
 
     session_start();
 
-    $title = "home";
+    $title = "Home";
 
-    $module = "home.php";
+    $module = "homeView.php";
     $content = array();
     array_push($content, $module);
 

@@ -4,7 +4,7 @@
 
     $title = "Sign up";
 
-    $module = "signup.php";
+    $module = "signupView.php";
     $content = array();
     array_push($content, $module);
 
