@@ -142,6 +142,8 @@ class UserTDG extends DBAO{
         
         try{
             $conn = $this->connect();
+            //$test = $conn->prepare('INSERT INTO users (email, username, password, image) VALUES (":email", ":username", ":password", ":image")');
+            //$test->execute();
             $tableName = $this->tableName;
             $query = "INSERT INTO $tableName (email, username, password, image) VALUES (:email, :username, :password, :image)";
             $stmt = $conn->prepare($query);
