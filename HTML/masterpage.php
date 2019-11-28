@@ -14,7 +14,7 @@
 </head>
     <body class="bg-gray-200" style="font-family: 'Patua One'">
     <?php include "nav.php";?>
-        <div style="margin-top:100px"> 
+        <div style="margin-top:100px; margin-bottom: 100px"> 
             <?php  load_modules($content); ?>
         </div>
         <footer>

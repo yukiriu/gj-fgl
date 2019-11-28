@@ -1,10 +1,16 @@
 <?php
 
     session_start();
+    
+    if(isset($_SESSION["userID"]))
+    {
+        header("Location: ../error.php?ErrorMSG=Already%20Logged!");
+        die();
+    }
 
     $title = "Sign in";
 
-    $module = "igninView.php";
+    $module = "signinView.php";
     $content = array();
     array_push($content, $module);
 

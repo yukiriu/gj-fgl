@@ -1,9 +1,11 @@
 <div class="container max-w-md mx-auto xl:max-w-3xl h-full flex bg-white rounded-lg shadow overflow-hidden">
   <div class="xl:block xl:w-1/2 h-100 bg-gray-400 flex items-center justify-center">
-    <div class="relative m-auto mt-20 w-64 h-64 rounded-full bg-orange-100"> </div>
-    <button class="bg-gray-800 hover:bg-grey-900 text-white text-sm font-semibold rounded h-10" type="button">
+    <div class="relative m-auto mt-32 w-64 h-64 rounded-full bg-gray-100"> </div>
+    <div class="relative m-auto mt-20 w-64">
+      <button class="bg-gray-800 hover:bg-grey-900 text-white text-sm font-semibold rounded h-full w-full m-auto p-1" type="button">
           Modify
-    </button>
+      </button>
+    </div>
   </div>
   <div class="w-full xl:w-1/2 p-8">
     <form method="post" action="#" onSubmit="return false">

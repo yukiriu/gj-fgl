@@ -1,17 +1,16 @@
 <?php
-
     if(isset($_SESSION["userID"])){
         $navItems = '
           <a href="modifyProfile.php" class="hover:text-gray-600 mr-4">'.$_SESSION["username"].'</a>
           <span class="mr-4 cursor-default" > | </span>
-          <a href="signup.php" class="hover:text-gray-600 mr-4">Logout</a>
+          <a href="signup.php" class="hover:text-gray-600">Logout</a>
         ';
     }
     else{
     $navItems = '
           <a href="signin.php" class="hover:text-gray-600 mr-4">Sign in</a>
           <span class="mr-4 cursor-default" > | </span>
-          <a href="signup.php" class="hover:text-gray-600 mr-4">Sign up</a>
+          <a href="signup.php" class="hover:text-gray-600">Sign up</a>
           ';
     }
 ?>
