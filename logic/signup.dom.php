@@ -6,7 +6,7 @@
 
     if(isset($_SESSION["userID"]))
     {
-        header("Location: ../error.php?ErrorMSG=Already%20logged!");
+        header("Location: ../pages/error.php?ErrorMSG=Already%20logged!");
         die();
     }
     
@@ -20,7 +20,7 @@
     $val = new validator();
     if(!$val->validate_email($email) || !$val->validate_password($pw))
     {
-        header("Location: ../HTML/error.php?ErrorMSG=invalid email or password");
+        header("Location: ../pages/error.php?ErrorMSG=Invalid email or password");
         die();
     }
 
@@ -29,7 +29,7 @@
     //validateLogin
     if(!$aUser->register($email,$username, $pw, $pwv))
     {
-        header("Location: ../HTML/error.php?ErrorMSG=invalid email or password");
+        header("Location: ../pages/error.php?ErrorMSG=invalid email or password");
         die();
     }
 

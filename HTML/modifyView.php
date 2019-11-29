@@ -20,9 +20,13 @@ $imagepath = $res['image'];
       <img src="<?php echo "../". $imagepath ?>" class="h-auto w-full object-contain">
     </div>
     <div class="relative m-auto mt-20 w-64">
-      <button class="bg-gray-800 hover:bg-grey-900 text-white text-sm font-semibold rounded h-full w-full m-auto p-1" type="button">
-        Modify
+    <form method = "post" action = "../logic/upload.dom.php?ref=modify"  enctype="multipart/form-data">  
+    <input class="bg-gray-700 text-white text-sm rounded-t h-full w-full m-auto p-1" type="file" name="image" accept="image/*" required>
+</input>
+      <button class="bg-gray-800 hover:bg-grey-900 text-white text-sm rounded-b h-full w-full m-auto p-1" type="submit">
+        Upload
       </button>
+      </form>
     </div>
   </div>
   <div class="w-full xl:w-1/2 p-8">
@@ -40,6 +44,13 @@ $imagepath = $res['image'];
         </label>
         <input class="text-sm appearance-none rounded w-full py-2 px-3 text-gray-700 bg-gray-200 leading-tight h-10" id="username" type="text" placeholder="<?php echo $username ?>" />
       </div>
+      <div class="flex w-full mt-8">
+        <button class="w-full bg-gray-800 hover:bg-grey-900 text-white text-sm py-2 px-4 rounded h-10" type="submit">
+          Modify
+        </button>
+      </div>
+      </form>
+      <form method="post" action="#" onSubmit="return false">
       <div class="mb-6 mt-6">
         <label class="block text-gray-700 text-sm font-semibold mb-2">
           New Password
@@ -59,7 +70,7 @@ $imagepath = $res['image'];
         <input class="text-sm bg-gray-200 appearance-none rounded w-full py-2 px-3 text-gray-700 mb-1 leading-tight focus:shadow-outline h-10" id="currentPassword" type="password" placeholder="Your password" />
       </div>
       <div class="flex w-full mt-8">
-        <button class="w-full bg-gray-800 hover:bg-grey-900 text-white text-sm py-2 px-4 font-semibold rounded h-10" type="button">
+        <button class="w-full bg-gray-800 hover:bg-orange-900 text-white text-sm py-2 px-4 rounded h-10" type="submit">
           Modify
         </button>
       </div>

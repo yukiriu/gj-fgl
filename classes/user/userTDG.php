@@ -168,11 +168,11 @@ class UserTDG extends DBAO{
         try{
             $conn = $this->connect();
             $tableName = $this->tableName;
-            $query = "UPDATE $tableName SET email=:email, username=:username, image =:image WHERE id=:id";
+            $query = "UPDATE $tableName SET email=:email, username=:username, image=:image WHERE userid=:userid";
             $stmt = $conn->prepare($query);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':username', $username);
-            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':userid', $id);
             $stmt->bindParam(':image', $image);
             $stmt->execute();
             $resp = true;
