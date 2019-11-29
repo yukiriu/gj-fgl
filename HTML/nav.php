@@ -1,9 +1,9 @@
 <?php
 if (isset($_SESSION["userID"])) {
     $navItems = '
-          <a href="modifyProfile.php" class="hover:text-gray-600 mr-4">' . $_SESSION["userName"] . '</a>
+          <a href="modify.php" class="hover:text-gray-600 mr-4">' . $_SESSION["userName"] . '</a>
           <span class="mr-4 cursor-default" > | </span>
-          <a href="signup.php" class="hover:text-gray-600">Logout</a>
+          <a href="../logic/logout.dom.php" class="hover:text-gray-600">Logout</a>
         ';
 } else {
     $navItems = '

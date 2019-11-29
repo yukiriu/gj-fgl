@@ -24,7 +24,7 @@
         die();
     }
 
-    header("Location: ../HTML/error.php?ErrorMSG=invalid email or password");
+    header("Location: ../pages/error.php?ErrorMSG=invalid email or password");
     die();
     ?>
     

@@ -1,25 +1,24 @@
 <?php
 include "../classes/user/user.php";
-
-$user = new User();
 $TDG = new UserTDG();
 $res = $TDG->get_by_id($_SESSION["userID"]);
 
-$id = $res['userid'];
+$id = $res['userId'];
 $email = $res['email'];
 $username = $res['username'];
 $imagepath = $res['image'];
+
 ?>
 
 
 
 <div class="container max-w-md mx-auto xl:max-w-3xl h-full flex bg-white rounded-lg shadow overflow-hidden">
   <div class="xl:block xl:w-1/2 h-100 bg-gray-400 flex items-center justify-center">
-  
-    <div class="relative m-auto mt-32 w-64 h-64 rounded-full bg-gray-100">
-    
-    <img src = "<?php echo "../".$imagepath ?>"> 
-  </div>
+
+    <div class="relative m-auto mt-32 w-64 h-64 rounded-full bg-gray-100 overflow-hidden">
+
+      <img src="<?php echo "../". $imagepath ?>" class="h-auto w-full object-contain">
+    </div>
     <div class="relative m-auto mt-20 w-64">
       <button class="bg-gray-800 hover:bg-grey-900 text-white text-sm font-semibold rounded h-full w-full m-auto p-1" type="button">
         Modify
@@ -33,13 +32,13 @@ $imagepath = $res['image'];
         <label class="block text-gray-700 text-sm font-semibold mb-2">
           Email
         </label>
-        <input class="text-sm appearance-none rounded w-full py-2 px-3 text-gray-700 bg-gray-200 leading-tight h-10" id="email" type="text" placeholder="Your email address" />
+        <input class="text-sm appearance-none rounded w-full py-2 px-3 text-gray-700 bg-gray-200 leading-tight h-10" id="email" type="text" placeholder="<?php echo $email ?>" />
       </div>
       <div class="mb-4 mt-6">
         <label class="block text-gray-700 text-sm font-semibold mb-2">
           Username
         </label>
-        <input class="text-sm appearance-none rounded w-full py-2 px-3 text-gray-700 bg-gray-200 leading-tight h-10" id="username" type="text" placeholder="Your username" />
+        <input class="text-sm appearance-none rounded w-full py-2 px-3 text-gray-700 bg-gray-200 leading-tight h-10" id="username" type="text" placeholder="<?php echo $username ?>" />
       </div>
       <div class="mb-6 mt-6">
         <label class="block text-gray-700 text-sm font-semibold mb-2">
@@ -67,5 +66,3 @@ $imagepath = $res['image'];
     </form>
   </div>
 </div>
-
-<?php echo var_dump(($_SESSION["userID"])) ?>
