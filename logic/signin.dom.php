@@ -12,7 +12,7 @@
     
     //prendre les variables du Post
     $email = $_POST["email"];
-    $pw = $_POST["pw"];
+    $pw = $_POST["password"];
 
     //Validation Posts
     $aUser = new User();
@@ -20,11 +20,11 @@
     //validateLogin
     if($aUser->Login($email, $pw))
     {
-        header("Location: ../home.php");
+        header("Location: ../pages/home.php");
         die();
     }
 
-    header("Location: ../error.php?ErrorMSG=invalid email or password");
+    header("Location: ../HTML/error.php?ErrorMSG=invalid email or password");
     die();
     ?>
     

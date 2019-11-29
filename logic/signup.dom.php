@@ -20,7 +20,7 @@
     $val = new validator();
     if(!$val->validate_email($email) || !$val->validate_password($pw))
     {
-        header("Location: ../error.php?ErrorMSG=invalid email or password");
+        header("Location: ../HTML/error.php?ErrorMSG=invalid email or password");
         die();
     }
 
@@ -29,7 +29,7 @@
     //validateLogin
     if(!$aUser->register($email,$username, $pw, $pwv))
     {
-        header("Location: ../error.php?ErrorMSG=invalid email or password");
+        header("Location: ../HTML/error.php?ErrorMSG=invalid email or password");
         die();
     }
 

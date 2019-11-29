@@ -3,7 +3,7 @@
         <img class="absolute h-auto w-full object-cover" src="https://images.unsplash.com/photo-1555527127-5d23f6f8e154?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80" />
     </div>
     <div class="w-full xl:w-1/2 p-8">
-        <form method="post" action="..\logic\signup.dom.php">
+        <form method="post" action="..\logic\signin.dom.php">
             <h1 class=" text-2xl font-bold">Sign in to your account</h1>
             <div>
                 <span class="text-gray-600 text-sm">

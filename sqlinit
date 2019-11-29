@@ -1,0 +1,8 @@
+create table Users(
+    userId integer AUTO_INCREMENT primary key,
+    email varchar(25) not null,
+    username varchar(25) not null,
+    password varchar(250) not null,
+    image varchar(250) not null
+)
+

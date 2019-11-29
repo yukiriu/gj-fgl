@@ -105,7 +105,7 @@ class User{
     }
 
 
-    public function validate_register($email, $pw){
+    public function validate_register($email){
         $TDG = new UserTDG();
         $res = $TDG->get_by_email($email);
         $TDG = null;
