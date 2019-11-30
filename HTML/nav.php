@@ -1,8 +1,15 @@
 <?php
+include "../classes/user/user.php";
 if (isset($_SESSION["userID"])) {
+    $TDG = new UserTDG();
+    $res = $TDG->get_by_id($_SESSION["userID"]);
+    $imagepath = $res['image'];
     $navItems = '
-          <a href="modify.php" class="hover:text-gray-600 mr-4">' . $_SESSION["userName"] . '</a>
-          <span class="mr-4 cursor-default" > | </span>
+          <div class="relative m-auto w-6 h-6 rounded-full bg-gray-100 overflow-hidden" style="display: flex; justify-content: center; align-items: center">
+            <img src="'. "../" . $imagepath.'" class="bg-cover object-contain" style="flex-shrink: 0; min-width: 100%; min-height: 100%">
+          </div>
+          <a href="modify.php" class="hover:text-gray-600 ml-2">' . $_SESSION["userName"] . '</a>
+          <span class="mx-4 cursor-default" > | </span>
           <a href="../logic/logout.dom.php" class="hover:text-gray-600">Logout</a>
         ';
 } else {

@@ -10,26 +10,23 @@
         die();
     }
     
-    //prendre les variables du Post
     $email = $_POST["email"];
     $username = $_POST["username"];
     $pw = $_POST["password"];
     $pwv = $_POST["passwordValidation"];
 
-    //Validation Posts
     $val = new validator();
     if(!$val->validate_email($email) || !$val->validate_password($pw))
     {
-        header("Location: ../pages/error.php?ErrorMSG=Invalid email or password");
+        header("Location: ../pages/error.php?ErrorMSG=Invalid email or password!");
         die();
     }
 
     $aUser = new User();
     
-    //validateLogin
     if(!$aUser->register($email,$username, $pw, $pwv))
     {
-        header("Location: ../pages/error.php?ErrorMSG=invalid email or password");
+        header("Location: ../pages/error.php?ErrorMSG=Passwords do not match!");
         die();
     }
 

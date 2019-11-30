@@ -17,7 +17,6 @@
 
     $img_extensions_arr = array("jpg","jpeg","png","gif");
 
-    
     $TDG = new UserTDG;
 
     if(!$TDG->update_info($_SESSION['userEmail'],$_SESSION["userName"],$_SESSION["userID"], substr($target_file, 3))) {
