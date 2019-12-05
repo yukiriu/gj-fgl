@@ -1,5 +1,6 @@
 <?php
-
+    include "../utils/sessionhandler.php";
+    
     session_start();
 
     if(!validate_session()){
