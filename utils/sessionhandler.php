@@ -22,9 +22,7 @@ function validate_session()
 {
     // l'usager n'est pas valide si cette variable
     // de session n'est pas definis
-    if (!isset($_SESSION["userID"])) {
-        return false;
-    }
+    
     // si le timeout est arrivé, la session n'est plus valide
     // on dois donc detruire la session
     if (time() >= $_SESSION["timeOut"]) {
@@ -40,7 +38,7 @@ function validate_session()
         $username = $_SESSION["userName"];
         end_session();
         session_start();
-        login($userId, $email, $username); 
+        StartSession($email); 
         return true;
     } else {
         $_SESSION["timeOut"] = time() + (60 * 15);
