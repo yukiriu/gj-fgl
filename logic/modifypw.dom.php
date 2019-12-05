@@ -15,7 +15,7 @@
 
     if(!($newPw === $newPwValidation) || empty($newPw) || empty($newPwValidation))
     {
-        header("Location: ../pages/error.php?ErrorMSG=Passwords do not match!".$newPw . $newPwValidation);   
+        header("Location: ../pages/error.php?ErrorMSG=Passwords do not match!");   
         die();
     }
     

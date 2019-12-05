@@ -1,5 +1,5 @@
 <?php
-  include __DIR__ . "/../UTILS/moduleloader.php";
+  include __DIR__ . "/../utils/moduleloader.php";
 ?>
 
 <!DOCTYPE HTML>

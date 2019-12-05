@@ -1,7 +1,7 @@
 <?php
     include "../classes/user/user.php";
     include "../utils/formvalidator.php";
-
+    include "../utils/sessionhandler.php";
     session_start();
 
     if(isset($_SESSION["userID"]))
@@ -20,6 +20,7 @@
     //validateLogin
     if($aUser->Login($email, $pw))
     {
+        StartSession($email);
         header("Location: ../pages/home.php");
         die();
     }
