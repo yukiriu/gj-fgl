@@ -6,7 +6,15 @@ $id = $res['userId'];
 $email = $res['email'];
 $username = $res['username'];
 $imagepath = $res['image'];
+$info ='';
 
+if(!empty($_GET["info"])){
+    $info = '
+    <div class="bg-gray-400 w-64 text-center mx-auto mb-6 -mt-12 rounded">' .$_GET["info"]. '</div>
+    ';
+}
+
+echo $info;
 ?>
 
 <div class="container max-w-md mx-auto xl:max-w-3xl h-full flex bg-white rounded-lg shadow overflow-hidden">
@@ -71,3 +79,4 @@ $imagepath = $res['image'];
     </form>
   </div>
 </div>
+

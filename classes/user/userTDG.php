@@ -163,15 +163,34 @@ class UserTDG extends DBAO{
         return $resp;
     }
 
-    public function update_info($email, $username, $id, $image){
+    public function update_info($email, $username, $id){
         
         try{
             $conn = $this->connect();
             $tableName = $this->tableName;
-            $query = "UPDATE $tableName SET email=:email, username=:username, image=:image WHERE userid=:userid";
+            $query = "UPDATE $tableName SET email=:email, username=:username WHERE userid=:userid";
             $stmt = $conn->prepare($query);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':userid', $id);
+            $stmt->execute();
+            $resp = true;
+        }
+        
+        catch(PDOException $e)
+        {
+            $resp = false;
+        }
+        $conn = null;
+        return $resp;
+    }
+    public function update_image($id, $image){
+        
+        try{
+            $conn = $this->connect();
+            $tableName = $this->tableName;
+            $query = "UPDATE $tableName SET image=:image WHERE userid=:userid";
+            $stmt = $conn->prepare($query);
             $stmt->bindParam(':userid', $id);
             $stmt->bindParam(':image', $image);
             $stmt->execute();

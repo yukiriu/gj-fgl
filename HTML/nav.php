@@ -21,18 +21,21 @@ if (isset($_SESSION["userID"])) {
 }
 ?>
 
-<div class="w-screen bg-gray-400">
+<div class="w-full bg-gray-400">
         <div class="flex items-center justify-between text-gray-700 h-32 px-48">
             <div class="hover:text-gray-600 h-20" style="font-size:50px">gj/fgl</div>
             <ul class="flex items-center justify-between">
                 <li>
-                    <a class="hover:text-gray-600 pl-6">Home</a>
+                    <a href = "home.php" class="hover:text-gray-600 pl-6">Home</a>
                 </li>
                 <li>
-                    <a class="hover:text-gray-600 pl-6">Photos</a>
+                    <a href = "photos.php" class="hover:text-gray-600 pl-6">Photos</a>
                 </li>
                 <li>
-                    <a class="hover:text-gray-600 pl-6">Albums</a>
+                    <a href = "albums.php" class="hover:text-gray-600 pl-6">Albums</a>
+                </li>
+                <li>
+                    <a href = "users.php" class="hover:text-gray-600 pl-6">Users</a>
                 </li>
             </ul>
             <div class="flex justify-between items-center w-1/10">

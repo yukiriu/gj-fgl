@@ -19,7 +19,7 @@
 
     $TDG = new UserTDG;
 
-    if(!$TDG->update_info($_SESSION['userEmail'],$_SESSION["userName"],$_SESSION["userID"], substr($target_file, 3))) {
+    if(!$TDG->update_image($_SESSION["userID"], substr($target_file, 3))) {
         header("Location: ../pages/error.php?ErrorMSG=Failed Request!");
         die();
     }

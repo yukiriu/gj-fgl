@@ -97,9 +97,9 @@ class User{
             return false;
         }
 
-        $_SESSION["userID"] = $this->id;
+        /*$_SESSION["userID"] = $this->id;
         $_SESSION["userEmail"] = $this->email;
-        $_SESSION["userName"] = $this->username;
+        $_SESSION["userName"] = $this->username;*/
 
         return true;
     }

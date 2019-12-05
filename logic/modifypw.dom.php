@@ -13,7 +13,7 @@
     $tdg = new UserTDG();
     $val = new Validator();
 
-    if(!($newPw === $newPwValidation) || empty($pw) || empty($vpw))
+    if(!($newPw === $newPwValidation) || empty($newPw) || empty($newPwValidation))
     {
         header("Location: ../pages/error.php?ErrorMSG=Passwords do not match!".$newPw . $newPwValidation);   
         die();
@@ -28,7 +28,7 @@
 
     if(password_verify($currentPw ,$aUser->get_password())) {
         $tdg->update_password(password_hash($newPw, PASSWORD_DEFAULT), $_SESSION["userID"]);
-        header("Location: ..\billboard.php");
+        header("Location: ../pages/modify.php?info=Password modified!");
         die();
     }
 
