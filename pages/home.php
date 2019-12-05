@@ -2,6 +2,11 @@
 
     session_start();
 
+    if(!validate_session()){
+        header("Location: ../pages/error.php?ErrorMSG=Session Timed Out");
+        die();
+    }
+
     $title = "Home";
 
     $module = "homeView.php";
