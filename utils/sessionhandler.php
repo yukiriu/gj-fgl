@@ -13,7 +13,7 @@ function StartSession($email)
     $_SESSION["userEmail"] = $email;
     $_SESSION["userName"] = $user->get_username();
     //Session timeout dans 15 minutes
-    $_SESSION["timeOut"] = time() + (30);
+    $_SESSION["timeOut"] = time() + (60 * 15);
     //renew_timeout
     $_SESSION["innitTimeStamp"] = time();
 }
