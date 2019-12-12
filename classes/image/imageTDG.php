@@ -52,14 +52,14 @@ class imagesTDG extends DBAO{
         return $result;
     }
 
-    public function add_images($URL, $description, $nbView, $nbLike, $tempsCreation, $userId, $albumID){
+    public function add_images($URL, $description, $nbView, $nbLike, $tempsCreation, $userId){
         
         try{
             $conn = $this->connect();
             //$test = $conn->prepare('INSERT INTO users (email, username, password, image) VALUES (":email", ":username", ":password", ":image")');
             //$test->execute();
             $tableName = $this->tableName;
-            $query = "INSERT INTO $tableName (URL, description, nbView, nbLike, tempsCreation, userId, albumID) VALUES (:URL, :description, :nbView, :nbLike, :tempsCreation, :userId, :albumID)";
+            $query = "INSERT INTO $tableName (URL, description, nbView, nbLike, tempsCreation, userId) VALUES (:URL, :description, :nbView, :nbLike, :tempsCreation, :userId)";
             $stmt = $conn->prepare($query);
             $stmt->bindParam(':URL', $URL);
             $stmt->bindParam(':description', $description);
@@ -67,7 +67,6 @@ class imagesTDG extends DBAO{
             $stmt->bindParam(':nbLike', $nbLike);
             $stmt->bindParam(':tempsCreation', $tempsCreation);
             $stmt->bindParam(':userId', $userId);
-            $stmt->bindParam(':albumID', $albumID);
             $stmt->execute();
             $resp =  true;
         }
