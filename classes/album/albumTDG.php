@@ -42,7 +42,7 @@ class AlbumTDG extends DBAO{
             $stmt->bindParam(':creator', $id);
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            $result = $stmt->fetch();
+            $result = $stmt->fetchALL();
         }
         
         catch(PDOException $e)
@@ -73,7 +73,7 @@ class AlbumTDG extends DBAO{
         return $result;
     }
 
-    public function add_album($creatorID,$title, $time, $description, $image){
+    public function add_album($creatorID,$title, $time, $description){
         
         try{
             $conn = $this->connect();

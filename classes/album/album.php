@@ -41,6 +41,15 @@ class Album{
         return $this->time;
     }
 
+    public function get_by_creator($id){
+        $TDG = new AlbumTDG();
+        return $TDG->get_by_creator($id);
+    }
+
+    public function add_album($creatorID,$title, $time, $description){
+        $TDG = new AlbumTDG();
+        $TDG->add_album($creatorID,$title, $time, $description);
+    }
     public function load_album($id){
         $TDG = new AlbumTDG();
         $res = $TDG->get_by_id($id);
@@ -61,8 +70,12 @@ class Album{
         return true;
     }
 
-    public function display_preview($id){
-        echo "123";
+    public function display_preview(){
+        echo '
+            <div class="bg-gray-300 h-32 mb-10 w-2/3 m-auto rounded">
+                <div href="album.php?albumID='.$this->id.'" class="text-gray-100 bg-gray-700 p-3 my-4 rounded text-xl mx-auto">'.$this->title.'</div>  
+            </div>
+        ';
     }
 }
 
