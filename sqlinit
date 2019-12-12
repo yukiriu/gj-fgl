@@ -4,5 +4,29 @@ create table Users(
     username varchar(25) not null,
     password varchar(250) not null,
     image varchar(250) not null
-)
+);
 
+create table albums(
+    albumID integer AUTO_INCREMENT primary key,
+    userID integer not null,
+    title varchar(25) not null,
+    time int not null,
+    description varchar(250) not null
+);
+
+ALTER TABLE albums 
+ADD CONSTRAINT fk_userid_albums
+FOREIGN KEY (userID) 
+REFERENCES users(userId);
+
+create table commentaires( idCommentaire int AUTO_INCREMENT PRIMARY KEY, typeObjet varchar(10), idObjet int, nbLike int, tempsCreation int, contenu varchar(250) )
+
+create TABLE images(
+    imageId int AUTO_INCREMENT PRIMARY KEY,
+    URL varchar(100),
+    description varchar(250),
+    nbView int,
+    nbLike int,
+    tempsCreation int,
+    userId int
+); alter table images add CONSTRAINT FOREIGN KEY(userId) REFERENCES users(userId);
