@@ -1,5 +1,5 @@
 <div class="container mx-auto w-auto xl:max-w-xl h-full bg-white rounded-lg shadow overflow-hidden">
-    <form class="w-11/12 pr-auto mr-auto">
+    <form class="w-11/12 pr-auto mr-auto" method="post" action="../logic/createalbum.dom.php">
     <div class="text-gray-700 text-sm font-semibold ml-4 mt-4">Title</div>
         <input class="text-sm rounded w-full p-4 m-4 text-gray-800 bg-gray-200 h-10" name="title" type="text" placeholder="Summer vacation or something..." />
         <div class="text-gray-700 text-sm font-semibold ml-4"> Description</div>
