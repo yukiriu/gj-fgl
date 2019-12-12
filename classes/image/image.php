@@ -6,6 +6,7 @@ class Images{
 
     private $userId;
     private $imagesId;
+    private $albumID;
     private $URL;
     private $description;
     private $tempsCreation;
@@ -32,7 +33,10 @@ class Images{
     public function get_imagesId(){
         return $this->imagesId;
     }
-
+    
+    public function get_albumId(){
+        return $this->albumID;
+    }
     public function get_URL(){
         return $this->URL;
     }
@@ -57,7 +61,6 @@ class Images{
     public function set_imagesId($id){
         $this->imagesId = $id;
     }
-
     public function set_URL($URL){
         $this->URL = $URL;
     }
@@ -98,6 +101,7 @@ class Images{
         $this->nbView = $res['nbView'];
         $this->nbLike = $res['nbLike'];
         $this->tempsCreation = $res['tempsCreation'];
+        $this->albumID = $res['albumID'];
         
         $TDG = null;
         return true;
