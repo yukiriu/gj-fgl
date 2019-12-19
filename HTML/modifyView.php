@@ -24,7 +24,7 @@ echo $info;
     </div>
     <div class="relative m-auto mt-20 w-64">
       <form method="post" action="../logic/uploadprofilepicture.dom.php" enctype="multipart/form-data">
-        <input class="bg-gray-700 text-white text-sm rounded-t h-full w-full m-auto pl- p-1" style="" type="file" name="image" accept="image/*" required />
+        <input class="bg-gray-700 text-white text-sm rounded-t h-full w-full m-auto pl- p-1" type="file" name="image" accept="image/*" required />
         <button class="bg-gray-800 hover:bg-gray-200 hover:text-gray-800 text-white text-sm rounded-b h-full w-full m-auto p-1" type="submit">
           Upload
         </button>

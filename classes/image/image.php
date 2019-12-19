@@ -1,12 +1,11 @@
 <?php
 
-include_once __DIR__ . "/imagesTDG.PHP";
+include_once __DIR__ . "/imageTDG.PHP";
 
-class Images{
+class Image{
 
     private $userId;
     private $imagesId;
-    private $albumID;
     private $URL;
     private $description;
     private $tempsCreation;
@@ -33,10 +32,7 @@ class Images{
     public function get_imagesId(){
         return $this->imagesId;
     }
-    
-    public function get_albumId(){
-        return $this->albumID;
-    }
+
     public function get_URL(){
         return $this->URL;
     }
@@ -61,6 +57,7 @@ class Images{
     public function set_imagesId($id){
         $this->imagesId = $id;
     }
+
     public function set_URL($URL){
         $this->URL = $URL;
     }
@@ -84,6 +81,22 @@ class Images{
     /*
         Quality of Life methods (Dans la langue de shakespear (ou QOLM pour les intimes))
     */
+    public function upload_image($albumID,$URL, $description, $nbView, $nbLike, $tempsCreation, $userId){
+        $TDG = new imagesTDG();
+        $res = $TDG -> add_images($albumID,$URL, $description, $nbView, $nbLike, $tempsCreation, $userId);
+
+        $TDG = null;
+        return $res;
+    
+    }
+
+    public function get_images_by_albumId($id)
+    {
+            $TDG = new imagesTDG();
+            return $TDG->get_all_by_AlbumId($id);
+
+    }
+
     public function load_image($imageId){
         $TDG = new imagesTDG();
         $res = $TDG->get_by_imagesId($imageId);
@@ -94,17 +107,24 @@ class Images{
             return false;
         }
 
-        $this->imagesId = $res['imagesId'];
+        $this->imagesId = $res['imageId'];
         $this->userId = $res['userId'];
         $this->URL = $res['URL'];
         $this->description = $res['description'];
         $this->nbView = $res['nbView'];
         $this->nbLike = $res['nbLike'];
         $this->tempsCreation = $res['tempsCreation'];
-        $this->albumID = $res['albumID'];
         
         $TDG = null;
         return true;
+    }
+
+    public function display_images(){
+        echo '
+            <div>
+                <a href="image.php?imageID='.$this->imagesId.'"><img src="../'.$this->URL.'" style="min-width: 60%" class="max-w-50 min-w-50 m-auto my-4"> </a>
+            </div>
+        ';
     }
 }
 

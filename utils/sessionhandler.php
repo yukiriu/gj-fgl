@@ -26,7 +26,6 @@ function validate_session_public()
     }
     return validate_session_private();
 }
-
 function validate_session_private()
 {
     if (time() >= $_SESSION["timeOut"]) {

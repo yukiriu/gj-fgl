@@ -36,9 +36,9 @@ class imagesTDG extends DBAO{
         
         try{
             $conn = $this->connect();
-            $query = "SELECT * FROM images WHERE imagesId=:imagesId";
+            $query = "SELECT * FROM images WHERE imageId=:imageId";
             $stmt = $conn->prepare($query);
-            $stmt->bindParam(':imagesId', $id);
+            $stmt->bindParam(':imageId', $id);
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $result = $stmt->fetch();
@@ -52,22 +52,42 @@ class imagesTDG extends DBAO{
         return $result;
     }
 
-    public function add_images($URL, $description, $nbView, $nbLike, $tempsCreation, $userId, $albumID){
+    public function get_all_by_AlbumId($id){
+
+        try{
+            $conn = $this->connect();
+            $query = "SELECT * FROM images WHERE albumID=:albumID";
+            $stmt = $conn->prepare($query);
+            $stmt->bindParam(":albumID", $id);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchAll();
+        }
+
+        catch(PDOException $e)
+        {
+            echo "Error: " . $e->getMessage();
+        }
+        $conn = null;
+        return $result;
+    }
+
+    public function add_images($albumID,$URL, $description, $nbView, $nbLike, $tempsCreation, $userId){
         
         try{
             $conn = $this->connect();
             //$test = $conn->prepare('INSERT INTO users (email, username, password, image) VALUES (":email", ":username", ":password", ":image")');
             //$test->execute();
             $tableName = $this->tableName;
-            $query = "INSERT INTO $tableName (URL, description, nbView, nbLike, tempsCreation, userId, albumID) VALUES (:URL, :description, :nbView, :nbLike, :tempsCreation, :userId, :albumID)";
+            $query = "INSERT INTO $tableName (albumID,URL, description, nbView, nbLike, tempsCreation, userId) VALUES (:albumID, :URL, :description, :nbView, :nbLike, :tempsCreation, :userId)";
             $stmt = $conn->prepare($query);
+            $stmt->bindParam(':albumID', $albumID);
             $stmt->bindParam(':URL', $URL);
             $stmt->bindParam(':description', $description);
             $stmt->bindParam(':nbView', $nbView);
             $stmt->bindParam(':nbLike', $nbLike);
             $stmt->bindParam(':tempsCreation', $tempsCreation);
             $stmt->bindParam(':userId', $userId);
-            $stmt->bindParam(':albumID', $albumID);
             $stmt->execute();
             $resp =  true;
         }

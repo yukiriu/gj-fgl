@@ -1,16 +1,12 @@
 <?php
-
 include_once __DIR__ . "/../../utils/connector.php";
-
-class commentaireTDG extends DBAO{
-
+class commentTDG extends DBAO{
     private $tableName;
     
     public function __construct(){
         Parent::__construct();
         $this->tableName = "commentaires";
     }
-
     public function get_by_idCommentaire($id){
         
         try{
@@ -30,7 +26,6 @@ class commentaireTDG extends DBAO{
         $conn = null;
         return $result;
     }
-
     public function add_commentaires($typeObjet, $idObjet, $nbLike, $tempsCreation, $contenu, $userId){
         
         try{
@@ -57,7 +52,6 @@ class commentaireTDG extends DBAO{
         $conn = null;
         return $resp;
     }
-
     public function update_commentaire($contenu, $idCommentaire){
         
         try{
@@ -78,7 +72,6 @@ class commentaireTDG extends DBAO{
         $conn = null;
         return $resp;
     }
-
     public function update_nbLike($nb, $idCommentaire){
         
         try{
@@ -140,5 +133,4 @@ class commentaireTDG extends DBAO{
         $conn = null;
         return $result;
     }
-
 }

@@ -29,9 +29,6 @@ if (isset($_SESSION["userID"])) {
                     <a href = "home.php" class="hover:text-gray-600 pl-6">Home</a>
                 </li>
                 <li>
-                    <a href = "photos.php" class="hover:text-gray-600 pl-6">Photos</a>
-                </li>
-                <li>
                     <a href = "albums.php" class="hover:text-gray-600 pl-6">Albums</a>
                 </li>
                 <li>

@@ -69,11 +69,21 @@ class Album{
         $TDG = null;
         return true;
     }
+    public function get_by_albumID($id)
+    {
+        $TDG = new AlbumTDG();
+        return $TDG->get_by_id($id);
+    }
 
     public function display_preview(){
         echo '
             <div class="bg-gray-300 h-32 mb-10 w-2/3 m-auto rounded">
-                <div href="album.php?albumID='.$this->id.'" class="text-gray-100 bg-gray-700 p-3 my-4 rounded text-xl mx-auto">'.$this->title.'</div>  
+                <div class="text-gray-100 bg-gray-700 p-3 my-4 rounded text-xl mx-auto"> <a href="album.php?albumID='.$this->id.'">'.$this->title.' </a></div>  
+            </div>
+
+            <div class="container max-w-md mx-auto xl:max-w-3xl h-full flex">
+            <div href="createalbum.php" class="rounded bg-red-700 text-gray-200 mt-0 mx-auto p-4 hover:bg-gray-200 hover:text-gray-700 hover:shadow-outline"> 
+            <a href="createalbum.php"> Delete Album - </a> </div>
             </div>
         ';
     }

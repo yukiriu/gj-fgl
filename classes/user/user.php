@@ -84,6 +84,31 @@ class User{
         return true;
     }
 
+    public function load_user_by_id($id){
+        $TDG = new UserTDG();
+        $res = $TDG->get_by_id($id);
+
+        if(!$res)
+        {
+            $TDG = null;
+            return false;
+        }
+
+        $this->id = $res['userId'];
+        $this->email = $res['email'];
+        $this->username = $res['username'];
+        $this->password = $res['password'];
+        $this->image = $res['image'];
+        
+        $TDG = null;
+        return true;
+    }
+
+    public function update_image($id, $image){
+        $TDG = new UserTDG();
+        return $TDG->update_image($id, $image);
+    }
+
 
     //Login Validation
     public function Login($email, $pw){
