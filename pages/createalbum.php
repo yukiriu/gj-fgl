@@ -1,6 +1,12 @@
 <?php
-
+    include "../utils/sessionhandler.php";
+    
     session_start();
+
+    if(!validate_session_private()){
+        header("Location: ../pages/error.php?ErrorMSG=Session Timed Out");
+        die();
+      }
 
     $title = "Create Album";
 

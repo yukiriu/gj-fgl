@@ -3,7 +3,7 @@
 
     session_start();
 
-    if(!validate_session()){
+    if(!validate_session_public()){
         header("Location: ../pages/error.php?ErrorMSG=Session Timed Out");
         die();
       }
