@@ -74,6 +74,11 @@ class Album{
         $TDG = new AlbumTDG();
         return $TDG->get_by_id($id);
     }
+    public function delete_album($id)
+    {
+        $TDG = new AlbumTDG();
+        return $TDG->delete_album($id);
+    }
 
     public function display_preview(){
         echo '
@@ -83,7 +88,7 @@ class Album{
 
             <div class="container max-w-md mx-auto xl:max-w-3xl h-full flex">
             <div href="createalbum.php" class="rounded bg-red-700 text-gray-200 mt-0 mx-auto p-4 hover:bg-gray-200 hover:text-gray-700 hover:shadow-outline"> 
-            <a href="createalbum.php"> Delete Album - </a> </div>
+            <a href="../logic/deletealbum.dom.php?albumID='. $this->id . '"> Delete Album - </a> </div>
             </div>
         ';
     }
