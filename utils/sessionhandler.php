@@ -18,13 +18,17 @@ function StartSession($email)
 /*
     fonction qui valide si la Session est encore valide
   */
-function validate_session()
+function validate_session_public()
 {
-    // l'usager n'est pas valide si cette variable
-    // de session n'est pas definis
-    
-    // si le timeout est arrivé, la session n'est plus valide
-    // on dois donc detruire la session
+    if(!isset($_SESSION["userID"]))
+    {
+        return true;
+    }
+    return validate_session_private();
+}
+
+function validate_session_private()
+{
     if (time() >= $_SESSION["timeOut"]) {
         end_session();
         return false;
