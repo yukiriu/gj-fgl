@@ -142,7 +142,10 @@ class User{
         return true;
     }
 
-
+    public function get_all_users(){
+        $TDG = new UserTDG();
+        return $TDG->get_all_users();
+    }
     public function register($email, $username, $pw, $vpw){
         
         if(!($pw === $vpw) || empty($pw) || empty($vpw))
@@ -160,6 +163,33 @@ class User{
         print_r ($res = $TDG->add_user($email, $username, password_hash($pw, PASSWORD_DEFAULT), "images\profileImages\default.jpg"));
         $TDG = null;
         return true;
+    }
+
+    public function display_user(){
+        echo '
+        <div class="-mt-1 bg-grey-lighter w-1/2 mx-auto">
+            <div class="container mx-auto">
+                <div class="flex justify-between items-center py-4 px-4">
+                    <div class="flex items-center">
+                        <img class="w-32 h-32 rounded-full" src="'."../" . $this->image.'">
+                            <div class="ml-6">
+                                <div class="text-2xl font-normal flex items-center">
+                                    <a href=user.php?userID='.$this->id.'><span class="mr-2">'.$this->username.'</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ';
+    }
+    
+    public function display(){
+        echo '
+            <div>
+                <a href="user.php?username='.$this->username.'"><img src="../'.$this->image.'" style="min-width: 60%" class="max-w-50 min-w-50 m-auto my-4"> </a>
+            </div>
+        ';
     }
 }
 

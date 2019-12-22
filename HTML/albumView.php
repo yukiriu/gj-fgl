@@ -26,5 +26,5 @@
         ?>
         <button class="w-32 bg-gray-800 hover:bg-gray-400 hover:text-gray-800 text-white text-sm py-2 px-4 ml-4 mb-4 rounded h-10">
           <a href = '../pages/uploadimage.php?albumID=<?php echo $_GET["albumID"]?>'> Upload Images</a>
-</butoon>
+</button>
 </div>

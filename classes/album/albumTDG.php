@@ -142,10 +142,8 @@ class AlbumTDG extends DBAO{
         try{
             $conn = $this->connect();
             $tableName = $this->tableName;
-            $query1 = "DELETE from images WHERE albumID =:albumID";
-            $query2 = "DELETE from $tableName  WHERE albumID=:albumID";
-            $stmt = $conn->prepare($query1);
-            $stmt = $conn->prepare($query2);
+            $query = "DELETE from $tableName  WHERE albumID=:albumID";
+            $stmt = $conn->prepare($query);
             $stmt->bindParam(':albumID', $id);
             $stmt->execute();
             $resp = true;

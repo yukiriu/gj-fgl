@@ -7,8 +7,10 @@
 
     $anAlbum = new Album();
 
-    $anAlbum->add_album($_SESSION["userID"],$albumTitle,time(),$albumDesc);
+    $bool = $anAlbum->add_album($_SESSION["userID"],$albumTitle,time(),$albumDesc);
 
     header("Location: ../pages/albums.php");
     die();
+
+    print $bool;
 ?>

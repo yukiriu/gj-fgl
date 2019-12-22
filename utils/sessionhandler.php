@@ -1,8 +1,4 @@
 <?php
-/*
-    fonction qui "set" toutes les variables de session quand un utilisateur
-    ce login.
-  */
 function StartSession($email)
 {
     $user = new User();

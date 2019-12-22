@@ -71,6 +71,27 @@ class imagesTDG extends DBAO{
         $conn = null;
         return $result;
     }
+    
+    public function get_desc_by_description($description)
+    {
+        try{
+            $conn = $this->connect();
+            $query = "SELECT description FROM images WHERE description like :description";
+            $stmt = $conn->prepare($query);
+            $description = "%" . $description . "%";
+            $stmt->bindParam(':description', $description);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchAll();
+        }
+        
+        catch(PDOException $e)
+        {
+            echo "Error: " . $e->getMessage();
+        }
+        $conn = null;
+        return $result;
+    }
 
     public function add_images($albumID,$URL, $description, $nbView, $nbLike, $tempsCreation, $userId){
         
@@ -127,6 +148,26 @@ class imagesTDG extends DBAO{
             $conn = $this->connect();
             $tableName = $this->tableName;
             $query = "UPDATE $tableName SET nbLike = nbLike + $nb WHERE imageId=:imageId";
+            $stmt = $conn->prepare($query);
+            $stmt->bindParam(':imageId', $imageId);
+            $stmt->execute();
+            $resp = true;
+        }
+        
+        catch(PDOException $e)
+        {
+            $resp = false;
+        }
+        $conn = null;
+        return $resp;
+    }
+
+    public function add_view($imageId){
+        
+        try{
+            $conn = $this->connect();
+            $tableName = $this->tableName;
+            $query = "UPDATE $tableName SET nbView = nbView + 1 WHERE imageId=:imageId";
             $stmt = $conn->prepare($query);
             $stmt->bindParam(':imageId', $imageId);
             $stmt->execute();

@@ -1,6 +1,6 @@
 <?php
     include "../utils/sessionhandler.php";
-    
+
     session_start();
 
     if(!validate_session_public()){
@@ -8,8 +8,10 @@
         die();
       }
 
-    $title = "Album";
-    $module = "albumView.php";
+    $title = "searchresults";
+
+    
+    $module = "searchView.php";
     $content = array();
     array_push($content, $module);
 

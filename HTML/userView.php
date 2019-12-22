@@ -1,18 +1,38 @@
 <?php
+$aUser = new User();
 
-    $aUser = new User();
-    $tdg = new UserTDG();
 
-    $res = $tdg->get_by_id($_GET["userID"]);
-    $image =  $res["image"];
-    $username = $res["username"];
+$aUser->load_user_by_id($_GET["userID"]);
+$image =  $aUser->get_image();
+$username = $aUser->get_username();
+
+include "../classes/album/album.php";
+
+$anAlbum = new Album();
+$res = $anAlbum->get_by_creator($_GET["userID"]);
+
 ?>
 
-<div class="container ">
-    <div class="relative m-auto mt-32 w-32 h-32 rounded-full bg-gray-100 overflow-hidden" style="display: flex; justify-content: center; align-items: center">
-      <img src="<?php echo "../" . $image ?>" class="bg-cover object-contain" style="flex-shrink: 0; min-width: 100%; min-height: 100%">
-    </div>
-    <div>
-        <?php echo $username ?>
+
+<div class="-mt-1 bg-grey-lighter w-1/2 mx-auto">
+    <div class="container mx-auto">
+        <div class="flex justify-between items-center py-4 px-4">
+            <div class="flex items-center">
+                <img class="w-32 h-32 rounded-full" src="<?php echo "../" . $image ?>">
+                <div class="ml-6">
+                    <div class="text-2xl font-normal flex items-center">
+                        <span class="mr-2"><?php echo $username ?></span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<?php
+foreach ($res as $album) {
+    $anAlbum->load_album($album["albumID"]);
+    $anAlbum->display_preview();
+}
+?>
+

@@ -1,11 +1,13 @@
 <?php
-$TDG = new UserTDG();
-$res = $TDG->get_by_id($_SESSION["userID"]);
 
-$id = $res['userId'];
-$email = $res['email'];
-$username = $res['username'];
-$imagepath = $res['image'];
+$aUser = new User();
+
+$aUser->load_user_by_id($_SESSION["userID"]);
+
+$id = $aUser->get_id();
+$email = $aUser->get_email();
+$username = $aUser->get_username();
+$imagepath = $aUser->get_image();
 $info ='';
 
 if(!empty($_GET["info"])){

@@ -9,7 +9,7 @@
     create table albums(
         albumID integer AUTO_INCREMENT primary key,
         userID integer not null,
-        title varchar(25) not null,
+        title varchar(100) not null,
         time int not null,
         description varchar(250) not null
     );
@@ -32,3 +32,10 @@
         userId int
     );
     alter table images add CONSTRAINT FOREIGN KEY(userId) REFERENCES users(userId);
+    
+    create table likes(
+        typeObjet varchar(10),
+        idObjet int ,
+        userId int,
+        PRIMARY KEY(typeObjet,idObjet,userId)
+    )

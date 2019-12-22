@@ -74,15 +74,21 @@ class Album{
         $TDG = new AlbumTDG();
         return $TDG->get_by_id($id);
     }
+
     public function delete_album($id)
     {
         $TDG = new AlbumTDG();
         return $TDG->delete_album($id);
     }
 
+    public function get_by_title($title)
+    {
+        $TDG = new AlbumTDG();
+        return $TDG->get_title_by_title($title);
+    }
     public function display_preview(){
         echo '
-            <div class="bg-gray-300 h-32 mb-10 w-2/3 m-auto rounded">
+            <div class="bg-gray-300 h-32 w-1/2 m-auto rounded">
                 <div class="text-gray-100 bg-gray-700 p-3 my-4 rounded text-xl mx-auto"> <a href="album.php?albumID='.$this->id.'">'.$this->title.' </a></div>  
             </div>
 
