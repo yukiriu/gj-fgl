@@ -138,6 +138,28 @@ class UserTDG extends DBAO{
         return $result;
     }
 
+    public function get_all_users_by_username($username){
+        
+        try{
+            $conn = $this->connect();
+            $tableName = $this->tableName;
+            $query = "SELECT * FROM $tableName where username like :username";
+            $stmt = $conn->prepare($query);
+            $username = "%" . $username. "%";
+            $stmt->bindParam(':username', $username);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchAll();
+        }
+        
+        catch(PDOException $e)
+        {
+            echo "Error: " . $e->getMessage();
+        }
+        $conn = null;
+        return $result;
+    }
+    
     public function add_user($email, $username, $password, $image){
         
         try{

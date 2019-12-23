@@ -11,6 +11,7 @@ class Image{
     private $tempsCreation;
     private $nbView;
     private $nbLike;
+    private $albumID;
 
     /*
         utile si on utilise un factory pattern
@@ -49,9 +50,9 @@ class Image{
     public function get_nbView(){
         return $this->nbView;
     }
-
-
-
+    public function get_albumID(){
+        return $this->albumID;
+    }
 
     //setters
     public function set_imagesId($id){
@@ -92,14 +93,14 @@ class Image{
 
     public function get_images_by_albumId($id)
     {
-            $TDG = new imagesTDG();
-            return $TDG->get_all_by_AlbumId($id);
-
+        $TDG = new imagesTDG();
+        return $TDG->get_all_by_AlbumId($id);
     }
-    public function get_desc_by_description($description)
+
+    public function get_by_description($description)
     {
         $TDG = new imagesTDG();
-        return $TDG->get_desc_by_description($description);
+        return $TDG->get_by_description($description);
     }
 
     public function delete_image($id)
@@ -125,11 +126,17 @@ class Image{
         $this->nbView = $res['nbView'];
         $this->nbLike = $res['nbLike'];
         $this->tempsCreation = $res['tempsCreation'];
+        $this->albumID = $res["albumID"];
         
         $TDG = null;
         return true;
     }
 
+    public function get_all_images(){
+        $TDG = new imagesTDG();
+        return $TDG->get_all_images();
+    }
+    
     public function add_view($imageId){
         $TDG = new imagesTDG();
         return $TDG->add_view($imageId);
@@ -140,6 +147,30 @@ class Image{
             <div>
                 <a href="image.php?imageID='.$this->imagesId.'"><img src="../'.$this->URL.'" style="min-width: 60%" class="max-w-50 min-w-50 m-auto my-4"> </a>
             </div>
+        ';
+    }
+
+    public function display_image_search(){
+        $aUser = new User();
+        $aUser->load_user_by_id($this->userId);
+        $username = $aUser->get_username();
+        echo '
+        <div class="mt-4">
+        <a href="image.php?imageID='.$this->imagesId.'">
+        <img class="mx-auto w-2/3 rounded-t-lg" src="../'.$this->URL.'">
+        </a>
+        </div>
+    
+        <div class="bg-gray-900 text-gray-300 text-3xl w-2/3 mx-auto pl-4">
+            <span class="font-extrabold">🖒</span>
+            <span class="ml-2 ">'.$this->nbLike.'</span>
+            <span class="ml-4 font-extrabold">👁</span>
+            <span class="ml-2">'.$this->nbView.'</span>
+        </div>
+        <div class="bg-gray-200 rounded-b-lg text-gray-800 w-2/3 mx-auto pl-4 pr-4 pt-2">
+            <span>'.$this->description.'</span><br>
+            <div class="font-base text-gray-400 border-t-2 pb-2">Posted by <u class="text-gray-500"><a href="user.php?userID='.$this->userId.'">'.$username.'<a></u> on '.gmdate("Y-m-d H:i", $this->tempsCreation).'</div>
+        </div>
         ';
     }
 }

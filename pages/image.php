@@ -3,10 +3,10 @@
     
     session_start();
 
-    if(!validate_session_private()){
+    if(!validate_session_public())
+    {
         header("Location: ../pages/error.php?ErrorMSG=Session Timed Out");
-        die();
-      }
+    }
 
     $title = "Image";
     $module = "imageView.php";

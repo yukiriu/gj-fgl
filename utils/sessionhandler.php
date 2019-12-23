@@ -11,9 +11,7 @@ function StartSession($email)
     //renew_timeout
     $_SESSION["innitTimeStamp"] = time();
 }
-/*
-    fonction qui valide si la Session est encore valide
-  */
+
 function validate_session_public()
 {
     if(!isset($_SESSION["userID"]))
@@ -44,8 +42,8 @@ function validate_session_private()
         return true;
     }
 }
-/*
-    fonction qui detruit la session (logout dans la langue de shakespear)
+
+    /*fonction qui detruit la session (logout dans la langue de shakespear)
   */
 function end_session()
 {

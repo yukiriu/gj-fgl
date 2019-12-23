@@ -14,7 +14,7 @@ $res = $anAlbum->get_by_creator($_GET["userID"]);
 ?>
 
 
-<div class="-mt-1 bg-grey-lighter w-1/2 mx-auto">
+<div class="-mt-1 bg-grey-lighter w-1/3 mx-auto">
     <div class="container mx-auto">
         <div class="flex justify-between items-center py-4 px-4">
             <div class="flex items-center">

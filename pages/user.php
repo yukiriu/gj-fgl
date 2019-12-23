@@ -6,6 +6,7 @@
         header("Location: ../pages/error.php?ErrorMSG=Session Timed Out");
         die();
     }
+    
 
     $title = "User";
 

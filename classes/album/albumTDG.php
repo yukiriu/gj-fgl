@@ -53,6 +53,28 @@ class AlbumTDG extends DBAO{
         return $result;
     }
 
+    public function get_all_albums_by_title($title){
+        
+        try{
+            $conn = $this->connect();
+            $tableName = $this->tableName;
+            $query = "SELECT * FROM $tableName where title like :title";
+            $stmt = $conn->prepare($query);
+            $title = "%" . $title. "%";
+            $stmt->bindParam(':title', $title);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchAll();
+        }
+        
+        catch(PDOException $e)
+        {
+            echo "Error: " . $e->getMessage();
+        }
+        $conn = null;
+        return $result;
+    }
+    
     public function get_all_albums(){
         
         try{

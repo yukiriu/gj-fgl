@@ -3,10 +3,11 @@
     
     session_start();
 
-    if(!validate_session_public()){
+    if(!validate_session_public())
+    {
         header("Location: ../pages/error.php?ErrorMSG=Session Timed Out");
         die();
-      }
+    }
 
     $title = "Album";
     $module = "albumView.php";

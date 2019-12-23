@@ -146,6 +146,12 @@ class User{
         $TDG = new UserTDG();
         return $TDG->get_all_users();
     }
+
+    public function get_all_users_by_username($username){
+        $TDG = new UserTDG();
+        return $TDG->get_all_users_by_username($username);
+    }
+
     public function register($email, $username, $pw, $vpw){
         
         if(!($pw === $vpw) || empty($pw) || empty($vpw))
@@ -167,14 +173,14 @@ class User{
 
     public function display_user(){
         echo '
-        <div class="-mt-1 bg-grey-lighter w-1/2 mx-auto">
+        <div class="-mt-1 bg-grey-lighter w-1/3 mx-auto">
             <div class="container mx-auto">
-                <div class="flex justify-between items-center py-4 px-4">
+                <div class="flex justify-start items-center py-4 px-4">
                     <div class="flex items-center">
                         <img class="w-32 h-32 rounded-full" src="'."../" . $this->image.'">
                             <div class="ml-6">
-                                <div class="text-2xl font-normal flex items-center">
-                                    <a href=user.php?userID='.$this->id.'><span class="mr-2">'.$this->username.'</span>
+                                <div class="text-2xl font-normal flex">
+                                    <a href=user.php?userID='.$this->id.'><span class="mr-2 hover:text-gray-600">'.$this->username.'</span></a>
                                 </div>
                             </div>
                         </div>

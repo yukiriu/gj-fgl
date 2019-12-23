@@ -8,7 +8,8 @@
     $anImage = new Image();
 
     $anImage->load_image($imageID);
-
+    echo $imageID;
+    
     if(isset($_SESSION["userID"]))
     {
         if($_SESSION["userID"] == $anImage->get_userId())
@@ -17,10 +18,10 @@
         }
         else
         {
-            header("Location: ../pages/error.php?ErrorMSG=This aint ya imago compadre");
+            header("Location: ../pages/error.php?ErrorMSG=This aint your imageo compadre");
             die();
         }
     }
-    header("Location: ../pages/album.php");
+    header("Location: ../pages/album.php?albumID=".$anImage->get_albumID());
     die();
 ?>

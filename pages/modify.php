@@ -3,10 +3,20 @@
     
     session_start();
 
-    if(!validate_session_private()){
+    if(!validate_session_private())
+    {
+      if(!isset($_SESSION["userID"]))
+      {
+        header("Location: ../pages/error.php?ErrorMSG=You Must Sign In Compadre");
+        die();
+      }
+      else
+      {  
         header("Location: ../pages/error.php?ErrorMSG=Session Timed Out");
         die();
       }
+        
+    }
 
     $title = "Modify";
 

@@ -3,36 +3,36 @@
   include_once __DIR__ . "/../CLASSES/user/user.php";
   include_once __DIR__ . "/../CLASSES/image/image.php";
 
-  $album = new Album();
-  $albums = $album->get_by_title($_GET["search"]);
+  $anAlbum = new Album();
+  $albums = $anAlbum->get_by_title($_GET["search"]);
 
-  $user = new User();
-  $users = $user->get_username_by_username($_GET["search"]);
+  $aUser = new User();
+  $users = $aUser->get_all_users_by_username($_GET["search"]);
 
-  $image = new Image();
-  $images = $image->get_desc_by_description($_GET["search"]);
-   echo  var_dump($albums);
+  $anImage = new Image();
+  $images = $anImage->get_by_description($_GET["search"]);
+  ?>
+
+
+<div class="w-32 mx-auto text-3xl text-center mb-4">
+  <H1>Results</H1>
+</div>
+<div class="bg-gray-300 h-auto p-4 w-3/5 m-auto rounded-lg">
+  <?php 
+
+  foreach($users as $user) {
+    $aUser->load_user_by_id($user["userId"]);
+    $aUser->display_user();
+    }
+
+  foreach($images as $image) {
+    $anImage->load_image($image["imageId"]);
+    $anImage->display_image_search();
+  }
 
    foreach($albums as $album) {
-    $album->load_album($album["title"]);
-    $album->display();
-  }?>
-?>
-
-<div class="container" style="margin-top:30px">
-  <H1>Results:</H1>
-  <?php echo "$_SERVER[REQUEST_URI]";
-
-    foreach($users as $user) {
-    $user->load_user($user["username"]);
-    $user->display();
-    }
-  foreach($images as $image) {
-    $image->load_image($image["description"]);
-    $image->display();
+    $anAlbum->load_album($album["albumID"]);
+    $anAlbum->display_preview_search();
   }
-  foreach($albums as $album) {
-    $album->load_album($album["title"]);
-    $album->display();
-  }?>
+  ?>
 </div>

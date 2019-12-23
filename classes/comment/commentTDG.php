@@ -1,6 +1,6 @@
 <?php
 include_once __DIR__ . "/../../utils/connector.php";
-class commentTDG extends DBAO{
+class CommentTDG extends DBAO{
     private $tableName;
     
     public function __construct(){
@@ -26,25 +26,23 @@ class commentTDG extends DBAO{
         $conn = null;
         return $result;
     }
-    public function add_commentaires($typeObjet, $idObjet, $nbLike, $tempsCreation, $contenu, $userId){
+    public function add_commentaire($typeObjet, $idObjet, $nbLike, $tempsCreation, $contenu, $userId){
         
         try{
             $conn = $this->connect();
-            //$test = $conn->prepare('INSERT INTO users (email, username, password, image) VALUES (":email", ":username", ":password", ":image")');
-            //$test->execute();
             $tableName = $this->tableName;
-            $query = "INSERT INTO $tableName (typeObjet, idObjet, nbLike, tempsCreation, contenu, userId) VALUES (:typeObjet, :idObjet, :nbLike, :tempsCreation, :contenu, :userId)";
+            $query = "INSERT INTO $tableName (typeObjet, idObjet, userId, nbLike, tempsCreation, contenu) VALUES (:typeObjet, :idObjet, :userId, :nbLike, :tempsCreation, :contenu)";
             $stmt = $conn->prepare($query);
             $stmt->bindParam(':typeObjet', $typeObjet);
             $stmt->bindParam(':idObjet', $idObjet);
+            $stmt->bindParam(':userId', $userId);
             $stmt->bindParam(':nbLike', $nbLike);
             $stmt->bindParam(':tempsCreation', $tempsCreation);
             $stmt->bindParam(':contenu', $contenu);
-            $stmt->bindParam(':userId', $userId);
+            
             $stmt->execute();
             $resp =  true;
         }
-        
         catch(PDOException $e)
         {
             $resp =  false;
@@ -92,7 +90,7 @@ class commentTDG extends DBAO{
         return $resp;
     }
     
-    public function delete_commentaire($idCommentaire){
+    public function delete_comment($idCommentaire){
         
         try{
             $conn = $this->connect();
@@ -116,7 +114,7 @@ class commentTDG extends DBAO{
         try{
             $conn = $this->connect();
             $tableName = $this->tableName;
-            $query = "SELECT * FROM $tableName where idObjet=:idObjet and where typeObjet=:typeObjet";
+            $query = "SELECT * FROM commentaires WHERE idObjet = :idObjet and typeObjet = :typeObjet";
             $stmt = $conn->prepare($query);
             $stmt->bindParam(':idObjet', $idObjet);
             $stmt->bindParam(':typeObjet', $typeObjet);
