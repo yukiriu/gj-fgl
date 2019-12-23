@@ -1,4 +1,5 @@
 <?php
+
 function StartSession($email)
 {
     $user = new User();

@@ -105,6 +105,7 @@ class Image{
 
     public function delete_image($id)
     {
+        unlink("../".$this->URL);
         $TDG = new imagesTDG();
         return $TDG->delete_image($id);
     }

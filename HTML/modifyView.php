@@ -22,7 +22,7 @@ echo $info;
 <div class="container max-w-md mx-auto xl:max-w-3xl h-full flex bg-white rounded-lg shadow overflow-hidden">
   <div class="xl:block xl:w-1/2 h-100 bg-gray-400 flex items-center justify-center">
     <div class="relative m-auto mt-32 w-64 h-64 rounded-full bg-gray-100 overflow-hidden" style="display: flex; justify-content: center; align-items: center">
-      <img src="<?php echo "../" . $imagepath ?>" class="bg-cover object-contain" style="flex-shrink: 0; min-width: 100%; min-height: 100%">
+      <img src="<?php echo "../" . $imagepath ?>" class="bg-cover object-cover" style="flex-shrink: 0; min-width: 100%; min-height: 100%">
     </div>
     <div class="relative m-auto mt-20 w-64">
       <form method="post" action="../logic/uploadprofilepicture.dom.php" enctype="multipart/form-data">

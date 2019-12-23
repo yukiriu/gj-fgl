@@ -51,7 +51,7 @@ $resImage = $anImages->get_URL();
         <form action="../logic/addComment.dom.php" method="post">
             <input hidden name="userID" value="' . $_SESSION["userID"] . '">
             <input hidden name="postID" value="' . $_GET["imageID"] . '">
-            <input hidden name="objet" value="album">
+            <input hidden name="objet" value="image">
             <textarea class="w-full my-2 p-2" name="commentContent" placeholder="Comment something homie" required></textarea>
             <button type="submit" class="rounded-lg bg-gray-800 text-sm text-gray-200 p-2 px-2 hover:bg-gray-200 hover:text-gray-700">Post comment</button>
         </form>

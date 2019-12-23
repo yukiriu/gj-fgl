@@ -9,8 +9,9 @@
     $newPw = $_POST["newPassword"];
     $newPwValidation = $_POST["newPasswordValidation"];
 
+    var_dump($_POST);
+    //die();
     $aUser = new User();
-    $tdg = new UserTDG();
     $val = new Validator();
 
     if(!($newPw === $newPwValidation) || empty($newPw) || empty($newPwValidation))
@@ -24,10 +25,10 @@
         die();
     }
 
-    $aUser->load_user($tdg->get_by_id($_SESSION["userID"])["email"]);
+    $aUser->load_user_by_id($_SESSION["userID"]);
 
     if(password_verify($currentPw ,$aUser->get_password())) {
-        $tdg->update_password(password_hash($newPw, PASSWORD_DEFAULT), $_SESSION["userID"]);
+        $aUser->update_password(password_hash($newPw, PASSWORD_DEFAULT), $aUser->get_id());
         header("Location: ../pages/modify.php?info=Password modified!");
         die();
     }

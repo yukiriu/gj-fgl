@@ -228,11 +228,10 @@ class UserTDG extends DBAO{
     }
     
     public function update_password($NHP, $id){
-        
         try{
             $conn = $this->connect();
             $tableName = $this->tableName;
-            $query = "UPDATE $tableName SET password=:password WHERE id=:id";
+            $query = "UPDATE $tableName SET password=:password WHERE userId=:id";
             $stmt = $conn->prepare($query);
             $stmt->bindParam(':password', $NHP);
             $stmt->bindParam(':id', $id);

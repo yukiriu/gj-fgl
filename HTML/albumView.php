@@ -19,7 +19,7 @@ $resImage = $anImages->get_images_by_albumId($_GET['albumID']);
 <div class="bg-gray-300 h-auto p-4 w-3/5 m-auto rounded-lg">
 
 <div class="container mx-auto w-2/3 h-full bg-white rounded-lg shadow overflow-hidden">
-    <div class="text-gray-700 text-sm text ml-4 text-3xl p-4"><?php print $anAlbum->get_title() ?></div>
+    <div class="text-gray-700 text-sm text text-3xl p-4"><?php print $anAlbum->get_title() ?></div>
     <div class="text-gray-700 text-sm font-semibold ml-4"></div>
     <?php foreach ($resImage as $images) {
         $anImages->load_image($images["imageId"]);

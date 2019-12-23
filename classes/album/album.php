@@ -108,15 +108,25 @@ class Album
         $image1 = $images[0]["URL"]?? null;
         $image2 = $images[1]["URL"]?? null;
         $image3 = $images[2]["URL"]?? null;
+        if(!is_null($image1)){
+            $image1 = "../" . $image1;
+        }
+        if(!is_null($image2)){
+            $image2 = "../" . $image2;
+        }
+        if(!is_null($image3)){
+            $image3 = "../" . $image3;
+        }
+        
         $aUser = new User();
         $aUser->load_user_by_id($this->creator);
         echo '
             <div class="bg-gray-300 h-40 w-1/3 m-auto rounded overflow-hidden mb-5">
                 <div class="text-gray-100 bg-gray-700 p-3 rounded-t text-xl mx-auto hover:text-gray-700 hover:bg-gray-300"> <a href="album.php?albumID=' . $this->id . '">' . $this->title .' by '.$aUser->get_username() .' </a></div> 
                 <div class="flex">
-                <img class="w-1/3 max-h-32" src=../'.$image1.'>
-                <img class="w-1/3 max-h-32" src=../'.$image2.'>
-                <img class="w-1/3 max-h-32" src=../'.$image3.'>
+                <img class="w-1/3 max-h-32" src='.$image1.'>
+                <img class="w-1/3 max-h-32" src='.$image2.'>
+                <img class="w-1/3 max-h-32" src='.$image3.'>
                 </div>
             </div>';
     }
@@ -127,15 +137,24 @@ class Album
         $image1 = $images[0]["URL"]?? null;
         $image2 = $images[1]["URL"]?? null;
         $image3 = $images[2]["URL"]?? null;
+        if(!is_null($image1)){
+            $image1 = "../" . $image1;
+        }
+        if(!is_null($image2)){
+            $image2 = "../" . $image2;
+        }
+        if(!is_null($image3)){
+            $image3 = "../" . $image3;
+        }
         $aUser = new User();
         $aUser->load_user_by_id($this->creator);
         echo '
             <div class="bg-gray-400 h-40 w-2/3 m-auto rounded overflow-hidden mt-5">
                 <div class="text-gray-100 bg-gray-700 p-3 rounded-t text-xl mx-auto hover:text-gray-700 hover:bg-gray-300"> <a href="album.php?albumID=' . $this->id . '">' . $this->title .' by '.$aUser->get_username() .' </a></div> 
                 <div class="flex">
-                <img class="w-1/3 max-h-32" src=../'.$image1.'>
-                <img class="w-1/3 max-h-32" src=../'.$image2.'>
-                <img class="w-1/3 max-h-32" src=../'.$image3.'>
+                <img class="w-1/3 max-h-32" src='.$image1.'>
+                <img class="w-1/3 max-h-32" src='.$image2.'>
+                <img class="w-1/3 max-h-32" src='.$image3.'>
                 </div>
             </div>';
     }

@@ -109,6 +109,11 @@ class User{
         return $TDG->update_image($id, $image);
     }
 
+    public function update_password($pw, $id){
+        $TDG = new UserTDG();
+        return $TDG->update_password($pw, $id);
+    }
+
 
     //Login Validation
     public function Login($email, $pw){
@@ -177,7 +182,9 @@ class User{
             <div class="container mx-auto">
                 <div class="flex justify-start items-center py-4 px-4">
                     <div class="flex items-center">
-                        <img class="w-32 h-32 rounded-full" src="'."../" . $this->image.'">
+                    <div class="w-32 h-32 rounded-full">
+                        <img class="object-cover" src="'."../" . $this->image.'">
+                    </div>
                             <div class="ml-6">
                                 <div class="text-2xl font-normal flex">
                                     <a href=user.php?userID='.$this->id.'><span class="mr-2 hover:text-gray-600">'.$this->username.'</span></a>

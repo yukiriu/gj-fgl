@@ -69,7 +69,7 @@ class Comment{
             echo '
         <div class="mx-auto mt-4 h-auto w-2/3 bg-gray-200 text-gray-800 rounded-lg pl-4 pr-4 pt-2">
         <span>'.$this->contenu.'</span><br>
-        <div class="font-base text-gray-400 border-t-2 pb-2">Posted by <u class="text-gray-500"><a href="user.php?userID='.$this->idComentaire.'">'. $aUser->get_username() .'<a></u> on ' . gmdate("Y-m-d H:i", $this->tempsCreation).'
+        <div class="font-base text-gray-400 border-t-2 pb-2">Posted by <u class="text-gray-500"><a href="user.php?userID='.$this->userId.'">'. $aUser->get_username() .'<a></u> on ' . gmdate("Y-m-d H:i", $this->tempsCreation).'
         <span class="ml-2 "> <a href="../logic/deletecomment.dom.php?commentID='.$this->idComentaire.'" class="text-gray-600 hover:text-gray-900">Delete comment</a></span>
         </div>
         </div>
@@ -79,7 +79,7 @@ class Comment{
             echo '
         <div class="mx-auto mt-4 h-auto w-2/3 bg-gray-200 text-gray-800 rounded-lg pl-4 pr-4 pt-2">
         <span>'.$this->contenu.'</span><br>
-        <div class="font-base text-gray-400 border-t-2 pb-2">Posted by <u class="text-gray-500"><a href="user.php?userID='.$this->idComentaire.'">'. $aUser->get_username() .'<a></u> on ' . gmdate("Y-m-d H:i", $this->tempsCreation).' </div>
+        <div class="font-base text-gray-400 border-t-2 pb-2">Posted by <u class="text-gray-500"><a href="user.php?userID='.$this->userId.'">'. $aUser->get_username() .'<a></u> on ' . gmdate("Y-m-d H:i", $this->tempsCreation).' </div>
         </div>
         ';
         }
